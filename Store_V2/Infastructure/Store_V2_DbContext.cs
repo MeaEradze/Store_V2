@@ -25,10 +25,12 @@ namespace Store_V2.Infastructure
                 entity.Property(e => e.TotalPrice).HasColumnType("decimal(18,2)").IsRequired();
                 entity.HasOne(e => e.Cart)
                       .WithMany(c => c.CartItems)
-                      .HasForeignKey(e => e.CartId);
+                      .HasForeignKey(e => e.CartId)
+                      .IsRequired();
                 entity.HasOne(e => e.Product)
                       .WithMany(p => p.CartItems)
-                      .HasForeignKey(e => e.ProductId);
+                      .HasForeignKey(e => e.ProductId)
+                      .IsRequired();
             });
 
             // Configure Carts
@@ -39,7 +41,8 @@ namespace Store_V2.Infastructure
                 entity.Property(e => e.LastEditedDate).IsRequired();
                 entity.HasOne(e => e.Customer)
                       .WithMany(c => c.Carts)
-                      .HasForeignKey(e => e.CustomerId);
+                      .HasForeignKey(e => e.CustomerId)
+                      .IsRequired();
             });
 
             // Configure Customers

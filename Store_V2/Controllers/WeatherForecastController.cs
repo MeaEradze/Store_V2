@@ -4,7 +4,7 @@ namespace Store_V2.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class WeatherForecastController : Microsoft.AspNetCore.Mvc.ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {

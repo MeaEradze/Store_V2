@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Store_V2.Infastructure;
+using Store_V2.Infastructure.Interfaces;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -22,6 +23,8 @@ if (app.Environment.IsDevelopment())
 
 builder.Services.AddDbContext<Store_V2_DbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<ICartService, CartService>();
 
 app.UseHttpsRedirection();
 
